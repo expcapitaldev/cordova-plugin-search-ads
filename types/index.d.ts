@@ -15,7 +15,7 @@ interface ISearchAdsAttributionPayload {
 	[key: string]: string | number | boolean;
 }
 
-interface ISearchAdsErrorPayload {
+interface ISearchAdsError {
 	/**
 	 * error code , see https://github.com/apple/swift/blob/3a75394c670bb7143397327ac7bf5b5fe8d50588/stdlib/public/SDK/Foundation/NSError.swift#L642
 	 */
@@ -32,7 +32,7 @@ interface ISearchAdsErrorPayload {
 
 /**
  * Return ISearchAdsAttributionPayload
- * Error:
+ * Error: ISearchAdsError
  */
 interface ISearchAdsPlugin {
 	requestAttributionDetails(): Promise<ISearchAdsAttributionPayload>;
