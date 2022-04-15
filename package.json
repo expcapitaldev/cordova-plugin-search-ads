@@ -1,0 +1,26 @@
+{
+ "version": "1.0.0",
+ "name": "cordova-plugin-search-ads",
+ "cordova_name": "Cordova Searhs ADS Plugin",
+ "description": "A apple search ads attribution plugin for cordova",
+ "license": "MIT",
+ "main": "www/SearchAds.js",
+ "types": "./types/index.d.ts",
+ "repo": "https://github.com/expcapitaldev/cordova-plugin-search-ads.git",
+ "issue": "https://github.com/expcapitaldev/cordova-plugin-search-ads/issues",
+ "author": "Eugene Trusevich",
+ "repository": {
+  "type": "git",
+  "url": "https://github.com/expcapitaldev/cordova-plugin-search-ads"
+ },
+ "keywords": [
+  "cordova",
+  "ads",
+  "cordova-ios",
+  "attribution",
+  "apple"
+ ],
+ "platforms": [
+  "ios"
+ ]
+}

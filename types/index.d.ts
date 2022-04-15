@@ -1,12 +1,3 @@
-# cordova-plugin-search-ads
-A apple search ads attribution plugin for cordova
-
-### Supported Platforms
-- iOS
-
-## Types
-
-```
 interface Cordova {
 	plugins: CordovaPlugins;
 }
@@ -24,7 +15,7 @@ interface ISearchAdsAttributionPayload {
 	[key: string]: string | number | boolean;
 }
 
-interface ISearchAdsError {
+interface ISearchAdsErrorPayload {
 	/**
 	 * error code , see https://github.com/apple/swift/blob/3a75394c670bb7143397327ac7bf5b5fe8d50588/stdlib/public/SDK/Foundation/NSError.swift#L642
 	 */
@@ -41,21 +32,8 @@ interface ISearchAdsError {
 
 /**
  * Return ISearchAdsAttributionPayload
- * Error: ISearchAdsError
+ * Error:
  */
 interface ISearchAdsPlugin {
 	requestAttributionDetails(): Promise<ISearchAdsAttributionPayload>;
 }
-
-```
-
-
-## Example
-
-```typescript
-
-cordova.plugins.SearchAds.requestAttributionDetails()
-    .then((payload: ISearchAdsAttributionPayload) => console.log(payload))
-    .catch((error?: any) => console.error(error));
-
-```
