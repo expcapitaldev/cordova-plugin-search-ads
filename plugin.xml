@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		id="cordova-plugin-search-ads"
+		version="1.0.0">
+
+	<name>Cordova Search Ads Plugin</name>
+	<description>A apple search ads attribution plugin for cordova</description>
+	<author>Eugene Trusevich</author>
+	<license>MIT</license>
+	<keywords>cordova,search,ads</keywords>
+	<repo>https://github.com/expcapitaldev/cordova-plugin-search-ads.git</repo>
+	<issue>https://github.com/expcapitaldev/cordova-plugin-search-ads/issues</issue>
+
+	<engines>
+		<engine name="cordova-ios" version=">=6.2.0" />
+	</engines>
+
+	<js-module src="www/SearchAds.js" name="SearchAdsPlugin">
+		<clobbers target="cordova.plugins.SearchAds" />
+	</js-module>
+
+	<platform name="ios">
+
+		<config-file target="config.xml" parent="/*">
+			<feature name="SearchAdsPlugin">
+				<param name="ios-package" value="SearchAdsPlugin" />
+				<param name="onload" value="false" />
+			</feature>
+		</config-file>
+
+		<header-file src="src/ios/CDVSearchAdsPlugin.h" />
+		<source-file src="src/ios/CDVSearchAdsPlugin.m" />
+		<header-file src="src/ios/CDVSearchAdsTool.h" />
+		<source-file src="src/ios/CDVSearchAdsTool.m" />
+
+<!--		this is an optional framework, it should be added to the main config if necessary -->
+
+<!--		>=9.0 < 14.0   -->
+		<framework src="iAd.framework" weak="true"/>
+
+<!--		14.3>=     -->
+		<framework src="AdServices.framework" weak="true"/>
+
+<!--		not required   -->
+<!--		<framework src="AdSupport.framework" weak="true" />-->
+
+<!--		AppTrackingTransparency ios >=14.0 <14.3-->
+		<framework src="AppTrackingTransparency.framework" weak="true" />
+
+	</platform>
+
+</plugin>
