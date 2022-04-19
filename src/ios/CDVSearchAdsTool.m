@@ -18,7 +18,7 @@
         BOOL enable = true;
         if (@available(iOS 14.0, *)) {
             ATTrackingManagerAuthorizationStatus status = [ATTrackingManager trackingAuthorizationStatus];
-            enable = status == (ATTrackingManagerAuthorizationStatusNotDetermined | ATTrackingManagerAuthorizationStatusAuthorized);
+            enable = status == ATTrackingManagerAuthorizationStatusNotDetermined || status == ATTrackingManagerAuthorizationStatusAuthorized;
 //            if (@available(iOS 14.5, *)) {
 //                enable = status == ATTrackingManagerAuthorizationStatusAuthorized;
 //            }
