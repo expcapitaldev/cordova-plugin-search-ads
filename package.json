@@ -1,5 +1,5 @@
 {
- "version": "1.0.2",
+ "version": "1.1.0",
  "name": "cordova-plugin-search-ads",
  "cordova_name": "Cordova Searhs ADS Plugin",
  "description": "A apple search ads attribution plugin for cordova",

@@ -5,6 +5,20 @@
 
 @implementation SearchAdsTool
 
++ (void) getAttributionTokenWithComplete: (void(^)(NSString *token, NSError *error))complete {
+    NSError *error;
+    if (@available(iOS 14.3, *)) {
+        NSString *token = [AAAttribution attributionTokenWithError:&error];
+        if (token != nil && token.length > 0) {
+            complete(token, nil);
+        } else {
+            complete(nil, error);
+        }
+    } else {
+        complete(nil, [[NSError alloc] initWithDomain:@"app" code:-1 userInfo:@{NSLocalizedDescriptionKey: @"Wrong iOS version"}]);
+    }
+}
+
 + (void)requestAttributionWithComplete:(void(^)(NSDictionary *data, NSError *error))complete {
     if (@available(iOS 14.3, *)) {
         NSError *error;
