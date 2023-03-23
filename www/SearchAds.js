@@ -14,6 +14,12 @@ var SearchAdsPlugin = (function () {
 			});
 		},
 
+        getAttributionToken: function () {
+            return new Promise(function (resolve, reject) {
+                exec(resolve, reject, 'SearchAdsPlugin', 'getAttributionToken', []);
+            });
+        }
+
 	};
 	return SearchAdsPlugin;
 })();

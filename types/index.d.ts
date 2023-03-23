@@ -36,4 +36,10 @@ interface ISearchAdsError {
  */
 interface ISearchAdsPlugin {
 	requestAttributionDetails(): Promise<ISearchAdsAttributionPayload>;
+
+    /**
+     * Generates a token used to obtain the app's attribution from Apple’s Attribution Server.
+     * iOS >= 14.3
+     */
+    getAttributionToken(): Promise<string>
 }

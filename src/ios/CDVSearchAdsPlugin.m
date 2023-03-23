@@ -15,6 +15,30 @@ static NSString*const LOG_TAG = @"SearchAdsPlugin[native]";
 
 
 #pragma mark - plugin API
+
+- (void) getAttributionToken:(CDVInvokedUrlCommand*)command {
+
+    [self.commandDelegate runInBackground:^{
+        @try {
+
+            __weak SearchAdsPlugin* weakSelf = self;
+
+            [SearchAdsTool getAttributionTokenWithComplete:^(NSString *token, NSError *error) {
+                if (token) {
+                    [weakSelf sendPluginStringResult: token command: command];
+                } else {
+                    [weakSelf sendPluginErrorWithError:error command:command];
+                }
+            }];
+
+        }@catch (NSException *exception) {
+            [self handlePluginExceptionWithContext:exception :command];
+        }
+    }];
+}
+
+
+
 - (void) requestAttributionDetails:(CDVInvokedUrlCommand*)command {
 
     [self.commandDelegate runInBackground:^{
@@ -37,6 +61,11 @@ static NSString*const LOG_TAG = @"SearchAdsPlugin[native]";
 }
 
 #pragma mark - utility functions
+
+- (void) sendPluginStringResult:(NSString*)result command:(CDVInvokedUrlCommand*)command {
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
 
 - (void) sendPluginDictionaryResult:(NSDictionary*)result command:(CDVInvokedUrlCommand*)command {
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
